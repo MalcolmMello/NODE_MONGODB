@@ -5,8 +5,16 @@ import User from '../models/User';
 
 export const home = async (req: Request, res: Response) => {
     let users = await User.findOne({
-        email: 'suporte@b7web.com.br'
-    })
+        age: { $gt: 18 }
+    }).sort({ age: 1 }) /* menor para maior */
+
+    let users1 = await User.findOne({
+        age: { $gt: 18 }
+    }).sort({ age: -1 }) /* maior para menor*/
+
+    let users2 = await User.findOne({
+        age: { $gt: 18 }
+    }).sort({ "name.firstaName": 1 }) /* alfabético */
 
 
 
