@@ -50,3 +50,15 @@ export const addUserAction = async (req: Request, res: Response) => {
     }
 
 }
+
+export const incrementAgeAction = async (req: Request, res: Response) => {
+    let { id } = req.params
+    let user = await User.findById(id)
+
+    if(user)
+    user.age = user.age + 1
+
+    await user?.save()
+
+    res.redirect('/')
+}
