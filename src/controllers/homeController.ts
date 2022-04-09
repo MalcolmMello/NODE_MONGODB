@@ -4,7 +4,13 @@ import { Product } from '../models/Product';
 import User from '../models/User';
 
 export const home = async (req: Request, res: Response) => {
-    let users = await User.find({})
+    let users = await User.findOne({
+        email: 'suporte@b7web.com.br'
+    })
+
+
+
+
     console.log("USUÁRIOS", users)
 
     let age: number = 90;
